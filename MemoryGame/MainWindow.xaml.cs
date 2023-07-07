@@ -81,7 +81,6 @@ namespace MemoryGame
             matchesFound = 0;
         }
 
-
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
             TextBlock textBlock = sender as TextBlock;
