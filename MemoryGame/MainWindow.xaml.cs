@@ -70,6 +70,7 @@ namespace MemoryGame
             {
                 if (textBlock.Name == "timeTextBlock") continue;
 
+                textBlock.Visibility = Visibility.Visible;
                 int index = random.Next(animalList.Count);
                 string nextAnimal = animalList[index];
                 textBlock.Text = nextAnimal;
@@ -111,5 +112,4 @@ namespace MemoryGame
             }
         }
     }
-
 }
