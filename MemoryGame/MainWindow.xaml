@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MemoryGame"
         mc:Ignorable="d"
-        Title="Finde alle passenden Tiere" Height="450" Width="400">
+        Title="Finde alle passenden Tiere" 
+        Height="450" Width="400">
     <Grid x:Name="mainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -28,7 +29,7 @@
             VerticalAlignment="Center" FontSize="24" MouseDown="TextBlock_MouseDown"/>
         <TextBlock Grid.Column="3" HorizontalAlignment="Center" Grid.Row="0" Text="?" 
             VerticalAlignment="Center" FontSize="24" MouseDown="TextBlock_MouseDown"/>
-        
+
         <TextBlock Grid.Column="0" HorizontalAlignment="Center" Grid.Row="1" Text="?" 
             VerticalAlignment="Center" FontSize="24" MouseDown="TextBlock_MouseDown"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" Text="?" 
@@ -37,7 +38,7 @@
             VerticalAlignment="Center" FontSize="24" MouseDown="TextBlock_MouseDown"/>
         <TextBlock Grid.Column="3" HorizontalAlignment="Center" Grid.Row="1" Text="?" 
             VerticalAlignment="Center" FontSize="24" MouseDown="TextBlock_MouseDown"/>
-        
+
         <TextBlock Grid.Column="0" HorizontalAlignment="Center" Grid.Row="2" Text="?" 
             VerticalAlignment="Center" FontSize="24" MouseDown="TextBlock_MouseDown"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" Text="?" 
@@ -46,7 +47,7 @@
             VerticalAlignment="Center" FontSize="24" MouseDown="TextBlock_MouseDown"/>
         <TextBlock Grid.Column="3" HorizontalAlignment="Center" Grid.Row="2" Text="?" 
             VerticalAlignment="Center" FontSize="24" MouseDown="TextBlock_MouseDown"/>
-        
+
         <TextBlock Grid.Column="0" HorizontalAlignment="Center" Grid.Row="3" Text="?" 
             VerticalAlignment="Center" FontSize="24" MouseDown="TextBlock_MouseDown"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Center" Grid.Row="3" Text="?" 
@@ -55,7 +56,6 @@
             VerticalAlignment="Center" FontSize="24" MouseDown="TextBlock_MouseDown"/>
         <TextBlock Grid.Column="3" HorizontalAlignment="Center" Grid.Row="3" Text="?" 
             VerticalAlignment="Center" FontSize="24" MouseDown="TextBlock_MouseDown"/>
-
 
         <TextBlock x:Name="timeTextBlock" HorizontalAlignment="Center" Grid.Row="4" 
                    Text="Elapsed Time" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="24" 
