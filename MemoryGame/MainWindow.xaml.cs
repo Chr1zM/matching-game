@@ -48,7 +48,7 @@ namespace MemoryGame
         {
             tenthsOfSecondsElapsed++;
             timeTextBlock.Text = (tenthsOfSecondsElapsed / 10F).ToString("0.0s");
-            
+
             if (matchesFound == REQUIRED_MATCHES)
             {
                 timer.Stop();
@@ -72,7 +72,9 @@ namespace MemoryGame
 
             Random random = new Random();
 
-            foreach (TextBlock textBlock in mainGrid.Children.OfType<TextBlock>().Where(tb => tb.Name != "timeTextBlock"))
+
+
+            foreach (TextBlock textBlock in GetMatchingTextBlocks())
             {
                 textBlock.Visibility = Visibility.Visible;
                 int index = random.Next(animalList.Count);
@@ -81,30 +83,46 @@ namespace MemoryGame
                 animalList.RemoveAt(index);
             }
 
+            holderTextBlock.Visibility = Visibility.Hidden;
+
             tenthsOfSecondsElapsed = 0;
             matchesFound = 0;
             timer.Start();
         }
 
+        private IEnumerable<TextBlock> GetMatchingTextBlocks()
+        {
+            return mainGrid.Children.OfType<TextBlock>()
+                .Where(tb => tb.Name != "timeTextBlock" && tb.Name != "holderTextBlock");
+        }
+
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
             TextBlock textBlock = sender as TextBlock;
+
             if (!findingMatch)
             {
                 textBlock.Visibility = Visibility.Hidden;
                 lastTextBlockClicked = textBlock;
                 findingMatch = true;
+
+                holderTextBlock.Visibility = Visibility.Visible;
+                holderTextBlock.Text = textBlock.Text;
             }
             else if (textBlock.Text == lastTextBlockClicked.Text)
             {
                 matchesFound++;
                 textBlock.Visibility = Visibility.Hidden;
                 findingMatch = false;
+
+                holderTextBlock.Visibility = Visibility.Hidden;
             }
             else
             {
                 lastTextBlockClicked.Visibility = Visibility.Visible;
                 findingMatch = false;
+
+                holderTextBlock.Visibility = Visibility.Hidden;
             }
         }
 
