@@ -28,6 +28,7 @@ namespace MemoryGame
         private int matchesFound;
         private TextBlock lastTextBlockClicked;
         private bool findingMatch = false;
+        private HighScoreManager highScoreManager;
 
         private const int REQUIRED_MATCHES = 8;
 
@@ -42,6 +43,8 @@ namespace MemoryGame
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(.1);
             timer.Tick += Timer_Tick;
+
+            highScoreManager = new HighScoreManager("./HighScore.txt");
             SetUpGame();
         }
 
@@ -53,7 +56,14 @@ namespace MemoryGame
             if (matchesFound == REQUIRED_MATCHES)
             {
                 timer.Stop();
-                timeTextBlock.Text = $"{timeTextBlock.Text} - Nochmal spielen?";
+                timeTextBlock.Text = $"{timeTextBlock.Text} - Zurück zum Hauptmenü?";
+
+
+                float finalTime = tenthsOfSecondsElapsed / 10F;
+                HighScoreEntry highScoreEntry = new HighScoreEntry(finalTime);
+
+                if (highScoreEntry.Score < highScoreManager.LoadHighScore().Score)
+                    highScoreManager.SaveHighScore(highScoreEntry);
             }
         }
 
@@ -129,7 +139,11 @@ namespace MemoryGame
         {
             if (matchesFound == REQUIRED_MATCHES)
             {
-                SetUpGame();
+                MainWindow mainWindow = new MainWindow();
+                Application.Current.MainWindow.Close();
+
+                Application.Current.MainWindow = mainWindow;
+                mainWindow.Show();
             }
         }
     }
