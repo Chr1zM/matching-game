@@ -69,27 +69,29 @@ namespace MemoryGame
 
         private void SetUpGame()
         {
-            List<string> animalList = new List<string>
-            {
-                "🐘", "🐘",
-                "🐙", "🐙",
-                "🐂", "🐂",
-                "🐇", "🐇",
-                "🦎", "🦎",
-                "🦥", "🦥",
-                "🦘", "🦘",
-                "🐕", "🐕",
-            };
+            List<string> animalList = getAnimalList();
 
             Random random = new Random();
+
+            // filter auf 8 Paare
+            List<string> filteredList = new List<string>();
+            while (filteredList.Count < 16)
+            {
+                int index = random.Next(animalList.Count);
+                string emoji = animalList[index];
+                animalList.RemoveAll(elem => elem.Equals(emoji));
+
+                filteredList.Add(emoji);
+                filteredList.Add(emoji);
+            }
 
             foreach (TextBlock textBlock in GetMatchingTextBlocks())
             {
                 textBlock.Visibility = Visibility.Visible;
-                int index = random.Next(animalList.Count);
-                string nextAnimal = animalList[index];
+                int index = random.Next(filteredList.Count);
+                string nextAnimal = filteredList[index];
                 textBlock.Text = nextAnimal;
-                animalList.RemoveAt(index);
+                filteredList.RemoveAt(index);
             }
 
             holderTextBlock.Visibility = Visibility.Hidden;
@@ -145,6 +147,72 @@ namespace MemoryGame
                 Application.Current.MainWindow = mainWindow;
                 mainWindow.Show();
             }
+        }
+
+        private static List<string> getAnimalList()
+        {
+            return new List<string>
+            {
+                "🐕","🐕",
+                "🐈","🐈",
+                "🐅","🐅",
+                "🐎","🐎",
+                "🦌","🦌",
+                "🦏","🦏",
+                "🦛","🦛",
+                "🐂","🐂",
+                "🐃","🐃",
+                "🐄","🐄",
+                "🐖","🐖",
+                "🐏","🐏",
+                "🐐","🐐",
+                "🐪","🐪",
+                "🐫","🐫",
+                "🦙","🦙",
+                "🦘","🦘",
+                "🦥","🦥",
+                "🦨","🦨",
+                "🦡","🦡",
+                "🐘","🐘",
+                "🐁","🐁",
+                "🐀","🐀",
+                "🦔","🦔",
+                "🐇","🐇",
+                "🐿","🐿",
+                "🦎","🦎",
+                "🐊","🐊",
+                "🐢","🐢",
+                "🐍","🐍",
+                "🐉","🐉",
+                "🦕","🦕",
+                "🦖","🦖",
+                "🦦","🦦",
+                "🦈","🦈",
+                "🐳", "🐳",
+                "🐠","🐠",
+                "🦐","🦐",
+                "🦑","🦑",
+                "🐙","🐙",
+                "🦞","🦞",
+                "🦀","🦀",
+                "🦆","🦆",
+                "🐓","🐓",
+                "🕊","🕊",
+                "🦢","🦢",
+                "🦜","🦜",
+                "🦩","🦩",
+                "🦚","🦚",
+                "🦉","🦉",
+                "🐦","🐦",
+                "🐧","🐧",
+                "🐤","🐤",
+                "🦇","🦇",
+                "🦋","🦋",
+                "🐌","🐌",
+                "🐛","🐛",
+                "🦟","🦟",
+                "🐜","🐜",
+            };
         }
     }
 }
