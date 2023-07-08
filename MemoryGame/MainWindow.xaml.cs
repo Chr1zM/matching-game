@@ -28,6 +28,8 @@ namespace MemoryGame
         private TextBlock lastTextBlockClicked;
         private bool findingMatch = false;
 
+        private const int REQUIRED_MATCHES = 8;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -47,7 +49,7 @@ namespace MemoryGame
             tenthsOfSecondsElapsed++;
             timeTextBlock.Text = (tenthsOfSecondsElapsed / 10F).ToString("0.0s");
             
-            if (matchesFound == 8)
+            if (matchesFound == REQUIRED_MATCHES)
             {
                 timer.Stop();
                 timeTextBlock.Text = $"{timeTextBlock.Text} - Nochmal spielen?";
@@ -108,7 +110,7 @@ namespace MemoryGame
 
         private void TimeTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (matchesFound == 8)
+            if (matchesFound == REQUIRED_MATCHES)
             {
                 SetUpGame();
             }
