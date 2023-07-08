@@ -22,18 +22,21 @@ namespace MemoryGame
     /// </summary>
     public partial class MainWindow : Window
     {
-        private DispatcherTimer timer = new DispatcherTimer();
+        private DispatcherTimer timer;
         private int tenthsOfSecondsElapsed;
         private int matchesFound;
-
-
         private TextBlock lastTextBlockClicked;
         private bool findingMatch = false;
 
         public MainWindow()
         {
             InitializeComponent();
+            InitializeGame();
+        }
 
+        private void InitializeGame()
+        {
+            timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(.1);
             timer.Tick += Timer_Tick;
             SetUpGame();
@@ -43,10 +46,11 @@ namespace MemoryGame
         {
             tenthsOfSecondsElapsed++;
             timeTextBlock.Text = (tenthsOfSecondsElapsed / 10F).ToString("0.0s");
+            
             if (matchesFound == 8)
             {
                 timer.Stop();
-                timeTextBlock.Text = timeTextBlock.Text + " - Nochmal spielen?";
+                timeTextBlock.Text = $"{timeTextBlock.Text} - Nochmal spielen?";
             }
         }
 
@@ -66,10 +70,8 @@ namespace MemoryGame
 
             Random random = new Random();
 
-            foreach (TextBlock textBlock in mainGrid.Children.OfType<TextBlock>())
+            foreach (TextBlock textBlock in mainGrid.Children.OfType<TextBlock>().Where(tb => tb.Name != "timeTextBlock"))
             {
-                if (textBlock.Name == "timeTextBlock") continue;
-
                 textBlock.Visibility = Visibility.Visible;
                 int index = random.Next(animalList.Count);
                 string nextAnimal = animalList[index];
@@ -77,15 +79,15 @@ namespace MemoryGame
                 animalList.RemoveAt(index);
             }
 
-            timer.Start();
             tenthsOfSecondsElapsed = 0;
             matchesFound = 0;
+            timer.Start();
         }
 
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
             TextBlock textBlock = sender as TextBlock;
-            if (findingMatch == false)
+            if (!findingMatch)
             {
                 textBlock.Visibility = Visibility.Hidden;
                 lastTextBlockClicked = textBlock;
