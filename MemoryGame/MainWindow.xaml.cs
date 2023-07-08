@@ -72,8 +72,6 @@ namespace MemoryGame
 
             Random random = new Random();
 
-
-
             foreach (TextBlock textBlock in GetMatchingTextBlocks())
             {
                 textBlock.Visibility = Visibility.Visible;
