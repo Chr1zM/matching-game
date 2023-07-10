@@ -4,8 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"     
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:MemoryGame" 
-      mc:Ignorable="d" 
-      Background="GhostWhite"
+      mc:Ignorable="d"
       Title="Finde alle passenden Tiere" 
       d:DesignHeight="450" d:DesignWidth="400">
 
