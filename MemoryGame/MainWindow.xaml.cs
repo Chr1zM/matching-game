@@ -13,17 +13,7 @@ namespace MemoryGame
         public MainWindow()
         {
             InitializeComponent();
-
-            highScoreManager = new HighScoreManager("./HighScore.txt");
-            HighScoreEntry highScore = highScoreManager.LoadHighScore();
-            if(highScore.Score != float.MaxValue)
-            {
-                highScoreTextBlock.Text = "HighScore: " + highScore.Score.ToString("0.0s");
-            }
-            else
-            {
-                highScoreTextBlock.Text = "HighScore: /";
-            }
+            ShowMenuPage();
         }
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
@@ -31,10 +21,16 @@ namespace MemoryGame
             InitializeGame();
         }
 
-        private void InitializeGame()
+        public void InitializeGame()
         {
             gamePage = new GamePage();
             Content = gamePage;
+        }
+
+        public void ShowMenuPage()
+        {
+            MenuPage menuPage = new MenuPage();
+            Content = menuPage;
         }
     }
 }

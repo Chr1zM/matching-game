@@ -132,11 +132,8 @@ namespace MemoryGame
         {
             if (matchesFound == REQUIRED_MATCHES)
             {
-                MainWindow mainWindow = new MainWindow();
-                Application.Current.MainWindow.Close();
-
-                Application.Current.MainWindow = mainWindow;
-                mainWindow.Show();
+                MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+                mainWindow.ShowMenuPage();
             }
         }
 

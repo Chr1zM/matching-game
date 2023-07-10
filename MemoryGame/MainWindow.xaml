@@ -4,20 +4,4 @@
         xmlns:local="clr-namespace:MemoryGame"
         Title="Zuordnungsspiel" 
         Height="450" Width="400">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-
-        <TextBlock Text="Hauptmenü" FontSize="36" Grid.Row="0"
-               HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
-        <Button Content="Spiel starten" Click="StartButton_Click" Grid.Row="1"
-            HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
-
-        <TextBlock x:Name="highScoreTextBlock" Text="HighScore: /" FontSize="12" Grid.Row="2"
-               HorizontalAlignment="Center" VerticalAlignment="Center"/>
-    </Grid>
 </Window>
