@@ -11,7 +11,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="Zuordnungsspiel" 
-        Height="450" Width="400">
+        Height="500" Width="400">
 
 
     <Window.Resources>

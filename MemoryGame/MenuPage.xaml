@@ -3,21 +3,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:MemoryGame"
         Title="Hauptmenü"
-        Height="450" Width="400">
+        Height="500" Width="400">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
         <TextBlock Text="Hauptmenü" FontSize="36" Grid.Row="0"
                HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-        <Button Content="Spiel starten" Click="StartButton_Click" Grid.Row="1"
-            HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Height="50"/>
+        <Button Content="Normal" Click="StartButton_Click" Grid.Row="1"
+            HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Height="50" Width="210"/>
 
-        <TextBlock x:Name="highScoreTextBlock" Text="HighScore: /" FontSize="12" Grid.Row="2"
+        <Button Content="RageMode starten" Click="StartButton_Click" Grid.Row="2"
+            HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Height="50" Width="210"/>
+
+        <Button Content="RAGEMode starten" Click="StartButton_Click" Grid.Row="3"
+            HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Height="50" Width="210"/>
+
+        <TextBlock x:Name="highScoreTextBlock" Text="HighScore: /" FontSize="16" Grid.Row="4"
                HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </Page>
