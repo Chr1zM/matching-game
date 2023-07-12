@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:MemoryGame" 
       mc:Ignorable="d"
       Title="Finde alle passenden Tiere" 
-      d:DesignHeight="450" d:DesignWidth="400">
+      d:DesignHeight="500" d:DesignWidth="400">
 
     <Grid x:Name="mainGrid">
         <Grid.ColumnDefinitions>

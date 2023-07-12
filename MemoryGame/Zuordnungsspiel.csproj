@@ -93,6 +93,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GameModes\BaseGameMode.cs" />
+    <Compile Include="GameModes\RageGameMode.cs" />
+    <Compile Include="GameModes\RageRageGameMode.cs" />
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
