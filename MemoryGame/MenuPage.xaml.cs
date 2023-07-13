@@ -34,7 +34,19 @@ namespace MemoryGame
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow.InitializeGame();
+            mainWindow.InitializeGame(GameMode.Base);
+        }
+
+        private void RageButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow.InitializeGame(GameMode.Rage);
+        }
+
+        private void RageRageButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow.InitializeGame(GameMode.RageRage);
         }
     }
 }

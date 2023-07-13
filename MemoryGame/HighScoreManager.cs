@@ -2,7 +2,7 @@
 
 namespace MemoryGame
 {
-    internal class HighScoreManager
+    public class HighScoreManager
     {
         private string highScoreFilePath;
 

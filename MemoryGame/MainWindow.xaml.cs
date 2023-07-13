@@ -16,14 +16,9 @@ namespace MemoryGame
             ShowMenuPage();
         }
 
-        private void StartButton_Click(object sender, RoutedEventArgs e)
+        public void InitializeGame(GameMode selectedGameMode)
         {
-            InitializeGame();
-        }
-
-        public void InitializeGame()
-        {
-            gamePage = new GamePage();
+            gamePage = new GamePage(selectedGameMode);
             Content = gamePage;
         }
 

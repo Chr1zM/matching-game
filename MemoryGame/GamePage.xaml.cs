@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace MemoryGame
 {
-    using System.Windows.Threading;
-
     /// <summary>
     /// Interaktionslogik für GamePage.xaml
     /// </summary>
@@ -18,16 +13,16 @@ namespace MemoryGame
 
         private BaseGameMode gameMode;
 
-        public GamePage()
+        public GamePage(GameMode selectedGameMode)
         {
             InitializeComponent();
 
-            InitializeGame();
+            InitializeGame(selectedGameMode);
         }
 
-        private void InitializeGame()
+        private void InitializeGame(GameMode selectedGameMode)
         {
-            gameMode = new BaseGameMode(mainGrid, timeTextBlock, holderTextBlock);
+            gameMode = new GameModeFactory(selectedGameMode, mainGrid, timeTextBlock, holderTextBlock).create();
         }
 
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
@@ -42,17 +37,6 @@ namespace MemoryGame
                 MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
                 mainWindow.ShowMenuPage();
             }
-        }
-
-        private static List<string> getAnimalList()
-        {
-            return new List<string>
-            {
-                "🐕", "🐈", "🐅", "🐎", "🦌", "🦏", "🦛", "🐂", "🐃", "🐄", "🐖", "🐏", "🐐", "🐪", "🐫", "🦙", "🦘",
-                "🦥", "🦨", "🦡", "🐘", "🐁", "🐀", "🦔", "🐇", "🐿", "🦎", "🐊", "🐢", "🐍", "🐉", "🦕", "🦖", "🦦",
-                "🦈", "🐳", "🐠", "🦐", "🦑", "🐙", "🦞", "🦀", "🦆", "🐓", "🕊", "🦢", "🦜", "🦩", "🦚", "🦉", "🐦",
-                "🐧", "🐤", "🦇", "🦋", "🐌", "🐛", "🦟", "🐜",
-            };
         }
     }
 }

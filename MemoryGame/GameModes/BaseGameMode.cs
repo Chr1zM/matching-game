@@ -11,20 +11,19 @@ namespace MemoryGame
 
     public class BaseGameMode
     {
-        private DispatcherTimer timer;
+        protected DispatcherTimer timer;
+        protected int tenthsOfSecondsElapsed;
 
-        private int tenthsOfSecondsElapsed;
-
-        private int matchesFound;
+        protected int matchesFound;
         public int MatchesFound { get { return matchesFound; } }
 
-        private TextBlock lastTextBlockClicked;
-        private bool findingMatch = false;
-        private HighScoreManager highScoreManager;
+        protected TextBlock lastTextBlockClicked;
+        protected bool findingMatch = false;
+        protected HighScoreManager highScoreManager;
 
-        private Grid mainGrid;
-        private TextBlock timeTextBlock;
-        private TextBlock holderTextBlock;
+        protected Grid mainGrid;
+        protected TextBlock timeTextBlock;
+        protected TextBlock holderTextBlock;
 
         public BaseGameMode(Grid grid, TextBlock timeText, TextBlock holderText)
         {
@@ -41,7 +40,7 @@ namespace MemoryGame
             timer.Interval = TimeSpan.FromSeconds(.1);
             timer.Tick += Timer_Tick;
 
-            highScoreManager = new HighScoreManager("./../HighScore.txt");
+            highScoreManager = new HighScoreManager("./HighScore.txt");
 
             SetUpGame();
         }
@@ -105,7 +104,7 @@ namespace MemoryGame
                 .Where(tb => tb.Name != "timeTextBlock" && tb.Name != "holderTextBlock");
         }
 
-        public void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        public virtual void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
             TextBlock textBlock = sender as TextBlock;
 
@@ -135,7 +134,7 @@ namespace MemoryGame
             }
         }
 
-        protected List<string> GetAnimalList()
+        private List<string> GetAnimalList()
         {
             return new List<string>
             {
