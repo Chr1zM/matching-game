@@ -47,24 +47,24 @@ namespace MemoryGame.GameModes
 
         protected void shuffle()
         {
-            List<string> animalList = new List<string>();
+            IEnumerable<TextBlock> textBlocks = GetVisibleTextBlocks(mainGrid);
 
-            foreach (TextBlock tb in GetMatchingTextBlocks(mainGrid))
-            {
-                animalList.Add(tb.Text);
-                tb.Text = string.Empty;
-            }
+            List<string> animalList = textBlocks.Select(tb => tb.Text).ToList();
 
             Random random = new Random();
 
-            foreach (TextBlock tb in GetMatchingTextBlocks(mainGrid))
+            GetVisibleTextBlocks(mainGrid).ToList().ForEach(tb =>
             {
                 int index = random.Next(animalList.Count);
-                string nextEmoji = animalList[index];
-                tb.Text = nextEmoji;
+                tb.Text = animalList[index];
                 animalList.RemoveAt(index);
-            }
+            });
         }
 
+        protected IEnumerable<TextBlock> GetVisibleTextBlocks(Grid mainGrid)
+        {
+            return GetMatchingTextBlocks(mainGrid)
+                .Where(tb => tb.Visibility == Visibility.Visible);
+        }
     }
 }
