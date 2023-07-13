@@ -94,7 +94,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Enums\GameMode.cs" />
-    <Compile Include="GameModeFactory.cs" />
+    <Compile Include="GameModes\Factory\GameModeFactory.cs" />
     <Compile Include="GameModes\BaseGameMode.cs" />
     <Compile Include="GameModes\RageGameMode.cs" />
     <Compile Include="GameModes\RageRageGameMode.cs" />

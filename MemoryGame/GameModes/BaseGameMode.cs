@@ -98,7 +98,7 @@ namespace MemoryGame
             }
         }
 
-        private IEnumerable<TextBlock> GetMatchingTextBlocks(Grid mainGrid)
+        protected IEnumerable<TextBlock> GetMatchingTextBlocks(Grid mainGrid)
         {
             return mainGrid.Children.OfType<TextBlock>()
                 .Where(tb => tb.Name != "timeTextBlock" && tb.Name != "holderTextBlock");
