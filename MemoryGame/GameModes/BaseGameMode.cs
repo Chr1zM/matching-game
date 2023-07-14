@@ -34,7 +34,7 @@ namespace MemoryGame
             InitializeGame();
         }
 
-        private void InitializeGame()
+        protected virtual void InitializeGame()
         {
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(.1);
