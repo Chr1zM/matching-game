@@ -11,6 +11,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="Zuordnungsspiel" 
+        MinHeight="500" MinWidth="400" 
         Height="500" Width="400">
 
 
